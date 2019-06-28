@@ -1,7 +1,7 @@
 <template>
   <div class="test">
    <div class="test-box">
-     123
+     123456
      <i class="fa fa-user-circle" aria-hidden="true"></i>
    </div>
    <el-button plain>按钮</el-button>
