@@ -10,26 +10,26 @@
 		</div>
 
 		<div class="right-log">
-			<span class="right-log-btn"><i class="fa fa-user-circle" aria-hidden="true"></i> 用户</span> | 
+			<span class="right-log-btn"><i class="fa fa-user-circle" aria-hidden="true"></i> 用户</span> |
 			<span class="right-log-btn">退出</span>
 		</div>
 	</div>
  </template>
- <script>
+<script>
 export default {
-	name: 'Header',
-	data(){
-		return {
+  name: 'Header',
+  data() {
+    return {
 
-		}
-	}
+    }
+  }
 }
- </script>
+</script>
 <style lang="scss" scoped>
 .header {
 	display: -webkit-flex;
-    display: flex;
-	justify-conten:space-between;
+  display: flex;
+	justify-content:space-between;
 	-webkit-justify-content:space-between;
 	align-items:center;
 	height:100%;

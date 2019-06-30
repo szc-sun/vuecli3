@@ -5,7 +5,7 @@ import getters from './getters'
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
-  modules: {test},
+  modules: { test },
   getters
 })
 export default store

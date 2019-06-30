@@ -6,7 +6,7 @@
  <template>
 	<div class="footer">
 		<div class="left-footer">
-			
+
 		</div>
 		<div class="center-footer">
 			底部
@@ -16,21 +16,21 @@
 		</div>
 	</div>
  </template>
- <script>
+<script>
 export default {
-	name: 'Footer',
-	data(){
-		return {
+  name: 'Footer',
+  data() {
+    return {
 
-		}
-	}
+    }
+  }
 }
- </script>
+</script>
 <style lang="scss" scoped>
 .footer {
 	display: -webkit-flex;
     display: flex;
-	justify-conten:space-between;
+	justify-content:space-between;
 	-webkit-justify-content:space-between;
 	align-items:center;
 	height:100%;
@@ -44,7 +44,7 @@ export default {
 	}
 	.right-log{
 		padding-right:50px;
-		display:inline-block;		
+		display:inline-block;
 	}
 }
 </style>
