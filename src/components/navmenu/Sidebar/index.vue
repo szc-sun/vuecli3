@@ -14,8 +14,8 @@
       class="el-menu-vertical-demo"
     >
       <sidebar-item
-        v-for="child in menudata"
-        :key="child.id"
+        v-for="child in menudata1"
+        :key="child.path"
         :item="child"
         :isCollapse="isCollapse"
       />
@@ -30,91 +30,168 @@ export default {
   components: { SidebarItem },
   props: {
     // route object
-    isCollapse:{
+    isCollapse: {
       type: Boolean,
       default: false
     }
   },
   computed: {
     // ...mapGetters(['sidebar']),
-    // routes() {
-    //   return this.$router.options.routes
-    // },
+    routes() {
+      return this.$store.getters.permission_routers
+    }
     // isCollapse() {
     //   return !this.sidebar.opened
     // }
   },
-  data(){
-    return {
-      menudata:[{ 
-          id:'1',
-          title:'首页',
-          level:'1',
-          icon:'el-icon-setting',
-          children:[{
-                id:'11',
-                icon:'el-icon-menu',
-                title:'选项一'
-              },{
-                id:'12',
-                icon:'el-icon-menu',
-                title:'选项二',
-                children:[{
-                id:'121',
-                icon:'el-icon-menu',
-                title:'选项四',
-                children:[{
-                  id:'1111',
-                  icon:'el-icon-menu',
-                  title:'选项五'
-                },{
-                  id:'1211',
-                  icon:'el-icon-menu',
-                  title:'选项六1111111111111111'
-                }]
-              }
-          ]
-
-              }
-          ]},{
-              id:'2',
-              icon:'el-icon-menu',
-              title:'导航二'
-            },{
-              id:'3',
-              icon:'el-icon-document',
-              title:'导航三'
-            },{
-              id:'4',
-              icon:'el-icon-setting',
-              title:'导航四'
-            },{
-              id:'5',
-              icon:'el-icon-setting',
-              title:'导航五'
-            },{
-              id:'6',
-              icon:'el-icon-setting',
-              title:'导航六'
-            },{
-              id:'7',
-              icon:'el-icon-setting',
-              title:'导航七'
-            },{
-              id:'8',
-              icon:'el-icon-setting',
-              title:'导航八'
-            }
-          ]
+  watch: {
+    routes(val) {
+      this.menudata1 = val
     }
-
   },
-  mounted(){
-    // this.$nextTick(function () {
-    //   console.log(this.isCollapse)
+  data() {
+    return {
+      menudata1: [],
+      menudata: [{
+        path: '1',
+        title: '首页',
+        level: '1',
+        icon: 'el-icon-setting',
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-document'
+        },
+        children: [{
+          path: '11',
+          icon: 'el-icon-menu',
+          title: '选项一',
+          meta: {
+            roles: ['关于'],
+            title: '关于',
+            icon: 'el-icon-document'
+          }
+        }, {
+          path: '12',
+          icon: 'el-icon-menu',
+          title: '选项二',
+          meta: {
+            roles: ['关于'],
+            title: '关于',
+            icon: 'el-icon-document'
+          },
+          children: [{
+            path: '121',
+            icon: 'el-icon-menu',
+            title: '选项四',
+            meta: {
+              roles: ['关于'],
+              title: '关于',
+              icon: 'el-icon-document'
+            },
+            children: [{
+              path: '1111',
+              meta: {
+                roles: ['关于'],
+                title: '关于',
+                icon: 'el-icon-document'
+              },
+              icon: 'el-icon-menu',
+              title: '选项五'
+            }, {
+              path: '1211',
+              icon: 'el-icon-menu',
+              meta: {
+                roles: ['关于'],
+                title: '关于',
+                icon: 'el-icon-document'
+              },
+              title: '选项六1111111111111111'
+            }]
+          }
+          ]
+
+        }
+        ] }, {
+        path: '2',
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-document'
+        },
+        icon: 'el-icon-menu',
+        title: '导航二'
+      }, {
+        path: '3',
+        icon: 'el-icon-document',
+        title: '导航三',
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-document'
+        }
+      }, {
+        path: '4',
+        icon: 'el-icon-setting',
+        title: '导航四',
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-document'
+        }
+      }, {
+        path: '5',
+        icon: 'el-icon-setting',
+        title: '导航五',
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-document'
+        }
+      }, {
+        path: '6',
+        icon: 'el-icon-setting',
+        title: '导航六',
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-document'
+        }
+      }, {
+        path: '7',
+        icon: 'el-icon-setting',
+        title: '导航七',
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-document'
+        }
+      }, {
+        path: '8',
+        icon: 'el-icon-setting',
+        title: '导航八',
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-document'
+        }
+      }
+      ]
+    }
+  },
+  mounted() {
+    // this.$nextTick(function() {
+    //   this.menudata1 = this.$store.getters.permission_routers
+    //   console.log('路由', this.$store.getters.permission_routers)
     // })
+    // this.$nextTick(function() {
+    //   this.routes.forEach(value => {
+    //     this.menudata1.push(value)
+    //   })
+    //   console.log(12345, this.routes, this.menudata1)
+    // })
+
     // console.log(22,this.isCollapse)
-    
   }
 }
 </script>
@@ -122,10 +199,10 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: auto;
     min-width: 200px;
-    
+
   }
 .el-menu-vertical-demo.el-menu{
-  border-right: 0 !important; 
+  border-right: 0 !important;
 }
 .el-menu-item.is-active {
   background: -webkit-linear-gradient(

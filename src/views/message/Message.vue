@@ -11,12 +11,12 @@
 <script>
 export default {
   name: 'Test',
-  data(){
+  data() {
     return {
 
     }
   },
-  mounted(){
+  mounted() {
     console.log(this.$store.getters.test1)
   }
 }

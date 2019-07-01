@@ -35,7 +35,7 @@ export default {
 	height:100%;
 	line-height:100%;
 	width:100%;
-	background:#004ea1;
+	background:#00C4E0;
 	.left-log{
 		display:inline-block;
 		height:80%;
