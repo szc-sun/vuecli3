@@ -56,7 +56,7 @@ const user = {
               return value
             }
           })
-          console.log('userData', userData)
+          // console.log('userData', userData)
           commit('SET_ROLES', userData[0].roles)
           commit('SET_ROLESNAME', userData[0].rolesName)
           commit('SET_NAME', userData[0].name)

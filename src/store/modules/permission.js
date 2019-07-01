@@ -56,7 +56,7 @@ const permission = {
   },
   actions: {
     GenerateRoutes: ({ commit }, data) => {
-      console.log(data)
+      // console.log(data)
       return new Promise(resolve => {
         const { roles } = data
         // console.log('权限路由信息: ', data)
