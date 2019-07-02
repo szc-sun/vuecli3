@@ -1,38 +1,19 @@
 <template>
   <div class="menu-wrapper" v-if="!item.hidden">
-  <!-- {{typeof item.children}} <br/>
- -->
-    <!-- <template
-      v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow"
-    > -->
-    <!-- <template
-      v-if="item.children === undefined"
-    >
-    <app-link :to="'/'+item.path+'?='">
-        <el-menu-item
-          :index="item.path"
-        >
-          <item
-            :icon="item.meta.icon"
-            :title="item.meta.title"
-          />
-        </el-menu-item>
-      </app-link>
-    </template> -->
     <template
       v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)"
     >
-      <app-link :to="resolvePath(onlyOneChild.path)">
+      <!-- <app-link :to="resolvePath(onlyOneChild.path)"> -->
         <el-menu-item
           :index="resolvePath(onlyOneChild.path)"
         >
           <item
             v-if="onlyOneChild.meta"
             :icon="onlyOneChild.meta.icon||item.meta.icon"
-            :title="generateTitle(onlyOneChild)"
+            :title="onlyOneChild.meta.title||item.meta.title"
           />
         </el-menu-item>
-      </app-link>
+      <!-- </app-link> -->
     </template>
     <el-submenu v-else ref="submenu" :index="item.path" :class="{'submenu-title-noDropdown':isCollapse}">
       <template slot="title">
@@ -47,15 +28,6 @@
           :item="child"
           :base-path="resolvePath(child.path)"
         />
-        <app-link v-else :to="resolvePath(child.path)" :key="child.name">
-          <el-menu-item :index="item.path">
-            <item
-
-              :icon="child.icon"
-              :title="child.title"
-            />
-          </el-menu-item>
-        </app-link>
       </template>
     </el-submenu>
   </div>
