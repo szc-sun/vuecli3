@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <MainPart/>
+    <router-view/>
   </div>
 </template>
 <script>
-import MainPart from '@/views/mainPart'
+// import MainPart from '@/views/mainPart'
 // import Footer from '@/components/footer'
 // import NavMenu from '@/components/navmenu'
 export default {
   name: 'App',
   components: {
-    MainPart
+    // MainPart
   }
 }
 </script>

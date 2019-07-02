@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "roles": ["admin"],
+      "roles": ["首页", "我的消息", "详情列表","管理","关于"],
       "rolesName":["首页", "我的消息", "详情列表","管理","关于"],
       "name": "admin",
       "power": "admin",
@@ -13,7 +13,7 @@
       "success": true
     },
     {
-      "roles": ["manager"],
+      "roles": ["首页", "我的消息", "详情列表","关于"],
       "rolesName":["首页", "我的消息", "详情列表","关于"],
       "name": "manager",
       "power": "manager",
@@ -25,7 +25,7 @@
       "success": true
     },
     {
-      "roles": ["user"],
+      "roles": ["首页", "我的消息", "详情列表","关于"],
       "rolesName":["首页", "我的消息", "详情列表","关于"],
       "name": "user",
       "power": "user",

@@ -15,7 +15,7 @@ export default {
   },
   mounted() {
     // console.log(this.$store)
-    this.$store.dispatch('Login', '')
+    // this.$store.dispatch('Login', '')
   }
 }
 </script>

@@ -14,9 +14,10 @@
       class="el-menu-vertical-demo"
     >
       <sidebar-item
-        v-for="child in menudata1"
-        :key="child.path"
-        :item="child"
+        v-for="route in routes"
+        :key="route.path"
+        :item="route"
+        :base-path="route.path"
         :isCollapse="isCollapse"
       />
     </el-menu>
@@ -180,6 +181,7 @@ export default {
     }
   },
   mounted() {
+    console.log('路由', this.$store.getters.permission_routers)
     // this.$nextTick(function() {
     //   this.menudata1 = this.$store.getters.permission_routers
     //   console.log('路由', this.$store.getters.permission_routers)

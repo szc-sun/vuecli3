@@ -11,7 +11,7 @@
 
 		<div class="right-log">
 			<span class="right-log-btn"><i class="fa fa-user-circle" aria-hidden="true"></i> 用户</span> |
-			<span class="right-log-btn">退出</span>
+			<span class="right-log-btn" @click="loginOut">退出</span>
 		</div>
 	</div>
  </template>
@@ -21,6 +21,43 @@ export default {
   data() {
     return {
 
+    }
+  },
+  methods: {
+    loginOut() {
+      const h = this.$createElement
+      this.$msgbox({
+        title: '提醒',
+        message: h('p', null, [
+          h('span', null, '确定要注销 '),
+          h('i', { style: 'color: teal' }, '用户'),
+          h('span', null, ' 吗？')
+        ]),
+        showCancelButton: true,
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        beforeClose: (action, instance, done) => {
+          if (action === 'confirm') {
+            instance.confirmButtonLoading = true
+            instance.confirmButtonText = '执行中...'
+            this.$store.dispatch('FedLogOut').then(res => {
+              done()
+              instance.confirmButtonLoading = false
+              const roles = []
+              this.$store.dispatch('GenerateRoutes', { roles })
+              this.$router.push('/login')
+              console.log(this.$store.getters.permission_routers, this.$router.options.routes)
+            })
+          } else {
+            done()
+          }
+        }
+      }).then(action => {
+        this.$message({
+          type: 'info',
+          message: '退出成功！'
+        })
+      })
     }
   }
 }

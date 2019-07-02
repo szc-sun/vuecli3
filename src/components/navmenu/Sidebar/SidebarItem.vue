@@ -1,14 +1,14 @@
 <template>
-  <div class="menu-wrapper">
+  <div class="menu-wrapper" v-if="!item.hidden">
   <!-- {{typeof item.children}} <br/>
  -->
     <!-- <template
       v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow"
     > -->
-    <template
+    <!-- <template
       v-if="item.children === undefined"
     >
-      <app-link :to="item.path">
+    <app-link :to="'/'+item.path+'?='">
         <el-menu-item
           :index="item.path"
         >
@@ -18,8 +18,23 @@
           />
         </el-menu-item>
       </app-link>
+    </template> -->
+    <template
+      v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)"
+    >
+      <app-link :to="resolvePath(onlyOneChild.path)">
+        <el-menu-item
+          :index="resolvePath(onlyOneChild.path)"
+        >
+          <item
+            v-if="onlyOneChild.meta"
+            :icon="onlyOneChild.meta.icon||item.meta.icon"
+            :title="generateTitle(onlyOneChild)"
+          />
+        </el-menu-item>
+      </app-link>
     </template>
-    <el-submenu v-if="item.children && item.children.length > 0" ref="submenu" :index="item.path" :class="{'submenu-title-noDropdown':isCollapse}">
+    <el-submenu v-else ref="submenu" :index="item.path" :class="{'submenu-title-noDropdown':isCollapse}">
       <template slot="title">
         <item :icon="generateIcon(item)" :title="generateTitle(item)"/>
       </template>
@@ -30,17 +45,17 @@
           v-if="item.children&&item.children.length>0"
           :key="child.path"
           :item="child"
-
+          :base-path="resolvePath(child.path)"
         />
-        <!-- <app-link v-else :to="resolvePath(child.path)" :key="child.name"> -->
-          <!-- <el-menu-item :index="item.path">
+        <app-link v-else :to="resolvePath(child.path)" :key="child.name">
+          <el-menu-item :index="item.path">
             <item
 
               :icon="child.icon"
               :title="child.title"
             />
-          </el-menu-item> -->
-       <!--  </app-link> -->
+          </el-menu-item>
+        </app-link>
       </template>
     </el-submenu>
   </div>
@@ -60,7 +75,7 @@
 </style>
 
 <script>
-// import path from 'path'
+import path from 'path'
 // import { generateTitle } from '@/utils/i18n'
 // import { validateURL } from '@/utils/validate'
 import AppLink from './Link'
@@ -79,6 +94,10 @@ export default {
     isCollapse: {
       type: Boolean,
       default: false
+    },
+    basePath: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -90,6 +109,40 @@ export default {
     // console.log(11,this.isCollapse)
   },
   methods: {
+    hasOneShowingChild(children, parent) {
+      // console.log(1111, children)
+      var showingChildren = []
+      if (children === undefined) {
+        // 如果没有要显示的子路由器，则显示父路由器
+
+        this.onlyOneChild = { ...parent, path: '', noShowingChildren: true }
+        return true
+      } else {
+        showingChildren = children.filter(item => {
+          if (item.hidden) {
+            return false
+          } else {
+          // 如果只有一个显示子则使用
+            this.onlyOneChild = item
+            return true
+          }
+        })
+
+        // 当只有一个子路由器时，默认情况下会显示子路由器
+        if (showingChildren.length === 1) {
+          return true
+        }
+      }
+
+      return false
+    },
+    resolvePath(routePath) {
+      // if (routePath === 'field/index') {
+      //   console.log(111111111)
+      // }
+      // console.log(23333, path.resolve(this.basePath, routePath), this.basePath, routePath)
+      return path.resolve(this.basePath, routePath)
+    },
     generateTitle(item) { // 收缩功能
       if (!this.isCollapse) {
         return item.meta.title
