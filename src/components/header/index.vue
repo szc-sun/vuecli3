@@ -10,8 +10,18 @@
 		</div>
 
 		<div class="right-log">
-			<span class="right-log-btn"><i class="fa fa-user-circle" aria-hidden="true"></i> 用户</span> |
-			<span class="right-log-btn" @click="loginOut">退出</span>
+
+			<span class="right-log-btn"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;{{name}}</span>&nbsp;&nbsp; |&nbsp;&nbsp;
+			<span class="right-log-btn" @click="loginOut">退出</span>&nbsp;&nbsp;
+      <el-select v-model="selectValue" @change="langChange" placeholder="请选择" class="lang-select">
+            <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+            </el-option>
+        </el-select>
+
 		</div>
 	</div>
  </template>
@@ -20,7 +30,26 @@ export default {
   name: 'Header',
   data() {
     return {
-
+      selectValue: '',
+      options: [
+        {
+          value: 'cn',
+          label: '中文'
+        }, {
+          value: 'en',
+          label: 'English'
+        }
+      ]
+    }
+  },
+  created() {
+    const that = this
+    console.log(localStorage.lang)
+    that.selectValue = localStorage.lang === undefined ? 'cn' : localStorage.lang
+  },
+  computed: {
+    name() {
+      return this.$store.getters.name
     }
   },
   methods: {
@@ -58,6 +87,11 @@ export default {
           message: '退出成功！'
         })
       })
+    },
+    langChange(e) {
+      // console.log(e)
+      localStorage.setItem('lang', e)
+      this.$i18n.locale = e
     }
   }
 }
@@ -86,6 +120,27 @@ export default {
 		padding-right:50px;
 		display:inline-block;
 		color:#fff;
+    .lang-select{
+      width:90px;
+      background:#00C4E0;
+      /deep/.el-input{
+        .el-input__inner{
+          background:#00C4E0;
+          color:#fff ;
+          border:0 ;
+          width:100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding-right:25px
+        }
+        span{
+          i{
+            color:#fff
+          }
+        }
+      }
+    }
 		.right-log-btn{
 			cursor:pointer
 		}

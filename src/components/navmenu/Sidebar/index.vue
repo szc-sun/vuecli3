@@ -8,7 +8,7 @@
     <el-menu
       :collapse="isCollapse"
       :unique-opened="true"
-       router 
+       router
       mode="vertical"
       text-color="#333"
       active-text-color="#fff"

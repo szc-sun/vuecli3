@@ -10,6 +10,8 @@ router.beforeEach((to, from, next) => {
     console.log(123, store.getters.roles)
     if (store.getters.roles === null) {
       next('/login')
+    } else if (sessionStorage.getItem('roles') === null) {
+      next('/login')
     } else if (store.getters.roles.length === 0) {
       store
         .dispatch('GetInfo')

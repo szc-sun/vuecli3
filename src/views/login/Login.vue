@@ -85,7 +85,9 @@ export default {
   display: flex;
   height:300px;
   width:40%;
-  margin:0 auto;
+  position: absolute;
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
   background: #c0C4E0;
   justify-content: center;
   align-items:center;
