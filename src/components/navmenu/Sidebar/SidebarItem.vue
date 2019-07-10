@@ -28,6 +28,15 @@
           :item="child"
           :base-path="resolvePath(child.path)"
         />
+        <app-link v-else :to="resolvePath(child.path)" :key="child.name">
+          <el-menu-item :index="resolvePath(child.path)">
+            <item
+              v-if="child.meta"
+              :icon="child.meta.icon"
+              :title="generateTitle(child)"
+            />
+          </el-menu-item>
+        </app-link>
       </template>
     </el-submenu>
   </div>

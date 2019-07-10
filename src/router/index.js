@@ -49,7 +49,29 @@ export const asyncRouterMap = [
         title: '我的消息',
         icon: 'el-icon-setting'
       },
-      component: () => import(/* webpackChunkName: "about" */ '@/views/message/Message')
+      component: () => import(/* webpackChunkName: "about" */ '@/views/message/Message'),
+      children: [
+        {
+          path: 'message2',
+          name: 'message2',
+          meta: {
+            roles: ['我的消息'],
+            title: '我的消息2',
+            icon: 'el-icon-setting'
+          },
+          component: () => import(/* webpackChunkName: "about" */ '@/views/message/Message')
+        },
+        {
+          path: 'message3',
+          name: 'message3',
+          meta: {
+            roles: ['我的消息'],
+            title: '我的消息3',
+            icon: 'el-icon-setting'
+          },
+          component: () => import(/* webpackChunkName: "about" */ '@/views/message/Message')
+        }
+      ]
     }]
   },
   // {

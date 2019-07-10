@@ -9,6 +9,7 @@
       </el-aside>
       <el-container>
         <el-main>
+          <Breadcrumb/>
           <router-view />
         </el-main>
       </el-container>
@@ -22,12 +23,14 @@
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import NavMenu from '@/components/navmenu'
+import Breadcrumb from '@/components/breadcrumb'
 export default {
   name: 'MainPart',
   components: {
     Header,
     Footer,
-    NavMenu
+    NavMenu,
+    Breadcrumb
   }
 }
 </script>

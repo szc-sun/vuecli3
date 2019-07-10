@@ -4,11 +4,11 @@
  */
 const test = {
   state: {
-    test1: true
+    test1: '123'
   },
   mutations: {
     SET_TEST: (state, data) => {
-      state.test = data
+      state.test1 = data
     }
   },
   actions: {
