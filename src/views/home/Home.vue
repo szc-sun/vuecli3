@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    
     <span @click="textChange">{{text}}</span>
     <tinymce-text id="tinymce" @release="release" style="color:#333"></tinymce-text>
     <div>{{$t('message.text')}}</div>

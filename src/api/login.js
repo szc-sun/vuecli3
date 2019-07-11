@@ -8,7 +8,8 @@ import request from '@/utils/request'
  */
 export function login(params) {
   return request({
-    url: '/users.json',
+    // url: '/users.json',
+    url: '/mock/login',
     method: 'get',
     params
   })

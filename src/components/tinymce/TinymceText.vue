@@ -5,9 +5,9 @@
     </div>
 </template>
 <script>
-	import tinymce from 'tinymce/tinymce'
+import tinymce from 'tinymce/tinymce'
 //这下面是tinymce的插件
-import 'tinymce/skins/ui/oxide/skin.css' // 白
+// import 'tinymce/skins/ui/oxide/skin.css' // 白
 // import 'tinymce/skins/ui/oxide-dark/skin.css' // 黑
 import 'tinymce/themes/silver/theme'
 import 'tinymce/plugins/image'

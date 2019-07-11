@@ -6,9 +6,18 @@ module.exports = {
       // 设置主机地址
       host: 'localhost',
       // 设置默认端口
-      port: '8080',
+      // port: '8080',
       // 打开浏览器
       open: true,
       port: 9000,
+      // 设置代理
+      // proxy: {
+      //   '/api': {
+      //     target: 'http://localhost:8081',
+      //     pathRewrite: {
+      //       '^/api': '/mock'
+      //     }
+      //   }
+      // }
     }
 }
