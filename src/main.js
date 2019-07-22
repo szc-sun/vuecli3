@@ -10,9 +10,9 @@ import axios from 'axios'
 // 引入echarts
 import echarts from 'echarts'
 import 'echarts/map/js/china.js'
-import "../mock/mock.js"
+import '../mock/mock.js'
 
-Vue.prototype.$echarts = echarts 
+Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
 import QS from 'qs'
 Vue.prototype.qs = QS
