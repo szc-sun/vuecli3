@@ -1,7 +1,7 @@
 <template>
 	<div style="height:100%">
 
-		<div style="border-bottom:0.5px solid #ccc;height:50px;line-height:50px;">
+		<div style="border-bottom:0.5px solid #ccc;height:50px;line-height:50px;text-align:center">
 			<i :class="{'el-icon-s-unfold':isCollapse,'el-icon-s-fold':!isCollapse}" @click="changeIsCollapse" style="cursor:pointer"></i>
 		</div>
 		<div  class="nav-box">
