@@ -3,12 +3,11 @@ import store from './store'
 // import jwt from 'jwt-simple'
 // import { Message, MessageBox } from 'element-ui'
 router.beforeEach((to, from, next) => {
-  console.log(123)
   if (to.path === '/login') {
     next()
   } else {
     // 拉取用户信息
-    console.log(123, store.getters.roles)
+    console.log(1233, store.getters.roles)
     if (store.getters.roles === null) {
       next('/login')
     } else if (sessionStorage.getItem('roles') === null) {
