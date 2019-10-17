@@ -10,7 +10,7 @@ import axios from 'axios'
 // 引入echarts
 import echarts from 'echarts'
 import 'echarts/map/js/china.js'
-import "../mock/mock.js"
+import '../mock/mock.js'
 import VuePreview from 'vue2-preview'
 Vue.use(VuePreview)
 import 'viewerjs/dist/viewer.css'
@@ -20,10 +20,10 @@ Vue.use(Viewer)
 
 // 这里是插件的默认设置
 Viewer.setDefaults({
-　zIndexInline: 9999
+  zIndexInline: 9999
 })
 
-Vue.prototype.$echarts = echarts 
+Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
 import QS from 'qs'
 Vue.prototype.qs = QS
