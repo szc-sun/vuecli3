@@ -102,15 +102,15 @@ export default {
         flink = ''
       }
       // 当内容中没有图片时，设置分享图片为网站logo
-      if (flink == '') {
+      if (flink === '') {
         lk = 'http://' + window.location.host + '/static/images/logo.png'
       }
       // 如果是上传的图片则进行绝对路径拼接
-      if (flink.indexOf('/uploads/') != -1) {
+      if (flink.indexOf('/uploads/') !== -1) {
         lk = 'http://' + window.location.host + flink
       }
       // 百度编辑器自带图片获取
-      if (flink.indexOf('ueditor') != -1) {
+      if (flink.indexOf('ueditor') !== -1) {
         lk = flink
       }
       // //qq空间接口的传参
@@ -118,16 +118,17 @@ export default {
       //     window.open('https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+document.location.href+'?sharesource=qzone&title='+ftit+'&pics='+lk+'&summary='+document.querySelector('meta[name="description"]').getAttribute('content'));
       // }
       // 新浪微博接口的传参
-      if (stype == 'sina') {
+      if (stype === 'sina') {
         window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent('http://127.0.0.1:8081/biomedical/#/demand-details/25') + '&title=' + ftit + '&pic=' + lk + '&appkey=2706825840')
       }
       // qq好友接口的传参
-      if (stype == 'qq') {
+      if (stype === 'qq') {
         window.open('http://connect.qq.com/widget/shareqq/index.html?url=http://127.0.0.1:8081/biomedical/#/demand-details/25&title=服务&pics=')
       }
       // 生成二维码给微信扫描分享，php生成，也可以用jquery.qrcode.js插件实现二维码生成
-      if (stype == 'wechat') {
-        window.open('http://zixuephp.net/inc/qrcode_img.php?url=http://47.104.98.71:18781/biomedical/index.html#/service-details/44')
+      if (stype === 'wechat') {
+        window.open('http://zixuephp.net/inc/qrcode_img.php?url=https://www.baidu.com/')
+        window.open('http://zixuephp.net/inc/qrcode_img.php?url=分享的地址')
       }
     },
     // 即将关闭的时候，调用这个处理函数
