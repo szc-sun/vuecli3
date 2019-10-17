@@ -1,0 +1,42 @@
+{
+  "data": [
+    {
+      "roles": ["首页", "我的消息", "详情列表","管理","关于"],
+      "rolesName":["首页", "我的消息", "详情列表","管理","关于"],
+      "name": "admin",
+      "power": "admin",
+      "userCode": "123",
+      "loginName": "admin",
+      "status": 200,
+      "token": true,
+      "userSign":"admin",
+      "success": true
+    },
+    {
+      "roles": ["首页", "我的消息", "详情列表","关于"],
+      "rolesName":["首页", "我的消息", "详情列表","关于"],
+      "name": "manager",
+      "power": "manager",
+      "userCode": "123",
+      "loginName": "manager",
+      "status": 200,
+      "token": true,
+      "userSign":"manager",
+      "success": true
+    },
+    {
+      "roles": ["首页", "我的消息", "详情列表","关于"],
+      "rolesName":["首页", "我的消息", "详情列表","关于"],
+      "name": "user",
+      "power": "user",
+      "userCode": "123",
+      "loginName": "user",
+      "status": 200,
+      "token": true,
+      "userSign":"user",
+      "success": true
+    }
+  ],
+  "status": 200,
+  "success": true
+}

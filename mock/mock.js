@@ -1,9 +1,9 @@
-//引入mockjs
-const Mock = require('mockjs');
+// 引入mockjs
+const Mock = require('mockjs')
 import login from './js/login'
 import list from './js/list'
-//获取mock.Random对象
-const Random = Mock.Random;
+// 获取mock.Random对象
+const Random = Mock.Random
 // //mock一组数据
 // const newsData = function() {
 //     let news = [];
@@ -22,5 +22,11 @@ const Random = Mock.Random;
 // }
 // Mock.mock('/news/index', 'get', newsData);  //mock(url,post/get/put/delete,数据)
 // Mock.mock(/\/mock\/login/, 'get', login.login);
-Mock.mock(RegExp('/mock/login' + ".*"), 'get', login.login);
-Mock.mock(RegExp('/mock/list' + ".*"), 'post', list.newsData);
+Mock.mock(RegExp('/mock/login' + '.*'), 'get', function(options) {
+  console.log(options)
+  return Mock.mock(login.login)
+})
+Mock.mock(RegExp('/mock/list' + '.*'), 'post', function(options) {
+  // console.log(options);
+  return Mock.mock(list.newsData)
+})

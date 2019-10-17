@@ -11,6 +11,17 @@ import axios from 'axios'
 import echarts from 'echarts'
 import 'echarts/map/js/china.js'
 import "../mock/mock.js"
+import VuePreview from 'vue2-preview'
+Vue.use(VuePreview)
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+
+Vue.use(Viewer)
+
+// 这里是插件的默认设置
+Viewer.setDefaults({
+　zIndexInline: 9999
+})
 
 Vue.prototype.$echarts = echarts 
 Vue.prototype.$axios = axios

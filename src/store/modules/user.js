@@ -52,7 +52,7 @@ const user = {
       return new Promise((resolve, reject) => {
         // var userInfo = { userName: 'admin', password: '123' }
         console.log('userInfo', userInfo)
-        login().then(res => {
+        login(userInfo).then(res => {
           var userData = res.data.filter((value, index, array) => {
             if (userInfo.userName === value.loginName && userInfo.password === value.userCode) {
               return value

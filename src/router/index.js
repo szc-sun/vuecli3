@@ -5,29 +5,13 @@ Vue.use(Router)
 
 // 公用权限路由
 export const constantRouterMap = [
-
-  {
-    path: '/login',
-    name: 'login',
-    hidden: true,
-    meta: {
-      roles: ['登录'],
-      title: '登录',
-      icon: 'el-icon-setting'
-    },
-    component: () => import(/* webpackChunkName: "about" */ '@/views/login/Login')
-  }
-]
-
-// 动态路由加载权限
-export const asyncRouterMap = [
   {
     path: '',
     component: MainPart,
     // component: () => import('@/views/home/Home'),
     redirect: 'home',
     meta: {
-      roles: ['首页'],
+      // roles: ['首页'],
       title: '首页',
       icon: 'el-icon-document'
     },
@@ -36,7 +20,7 @@ export const asyncRouterMap = [
       name: 'Home',
       component: () => import('@/views/home/Home'),
       meta: {
-        roles: ['首页'],
+        // roles: ['首页'],
         title: '首页',
         icon: 'el-icon-document'
       }
@@ -74,6 +58,80 @@ export const asyncRouterMap = [
       ]
     }]
   },
+  {
+    path: '/drag-table',
+    name: 'drag-table',
+    redirect: '/drag-table/index',
+    component: MainPart,
+    // hidden: true,
+    children: [
+      {
+        path: 'index',
+        name: 'index',
+        meta: {
+          // roles: ['数据管理'],
+          title: '表格ts',
+          icon: 'el-icon-setting'
+        },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/drag-table/drag-table')
+      }
+
+    ]
+  },
+  {
+    path: '/echarts-china',
+    name: 'echarts-china',
+    redirect: '/echarts-china/index1',
+    component: MainPart,
+    // hidden: true,
+    children: [
+      {
+        path: 'index1',
+        name: 'index1',
+        meta: {
+          // roles: ['数据管理'],
+          title: '数据管理',
+          icon: 'el-icon-setting'
+        },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina')
+      }
+    ]
+  },
+  {
+    path: '/echarts-china2',
+    name: 'echarts-china2',
+    redirect: '/echarts-china2/index2',
+    component: MainPart,
+    // hidden: true,
+    children: [
+      {
+        path: 'index2',
+        name: 'index2',
+        meta: {
+          // roles: ['数据管理'],
+          title: '数据管理2',
+          icon: 'el-icon-setting'
+        },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina2')
+      }
+    ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    hidden: true,
+    meta: {
+      roles: ['登录'],
+      title: '登录',
+      icon: 'el-icon-setting'
+    },
+    component: () => import(/* webpackChunkName: "about" */ '@/views/login/Login')
+  }
+]
+
+// 动态路由加载权限
+export const asyncRouterMap = [
+
   // {
   //   path: '/message',
   //   name: 'message',

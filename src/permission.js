@@ -3,6 +3,7 @@ import store from './store'
 // import jwt from 'jwt-simple'
 // import { Message, MessageBox } from 'element-ui'
 router.beforeEach((to, from, next) => {
+  console.log(123)
   if (to.path === '/login') {
     next()
   } else {

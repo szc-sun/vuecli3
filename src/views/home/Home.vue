@@ -1,11 +1,40 @@
 <template>
   <div class="home">
+  <el-button @click="toQQ">QQ</el-button>
+  <div @click="shareTo('qq')">     
+    <img src="http://zixuephp.net/static/images/qqshare.png" width="32"> 
+</div> 
+<div @click="shareTo('sina')">     
+    <img src="http://zixuephp.net/static/images/sinaweiboshare.png" width="36"> 
+</div> 
+<div @click="shareTo('wechat')">     
+    <img src="http://zixuephp.net/static/images/wechatshare.png" width="32"> 
+</div>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <span @click="textChange">{{text}}</span>
     <tinymce-text id="tinymce" @release="release" style="color:#333"></tinymce-text>
     <div>{{$t('message.text')}}</div>
     <div id="myChart1" :style="{width: '600px', height: '600px'}"></div>
     <div id="myChart2" :style="{width: '600px', height: '600px'}"></div>
+    <div>
+    <div style="height: 1000px; background-color: pink;"></div>
+    <vue-preview
+      :list="list"
+      :thumbImageStyle="{width: '80px', height: '80px', margin: '10px'}"
+      :previewBoxStyle="{border: '1px solid #eee'}"
+      
+      @close="closeHandler"
+      @destroy="destroyHandler"
+    />
+     <viewer>
+       <img
+          width="150"
+          v-for="src in list"
+          :src="src.src"
+          :key="src"
+           >
+   </viewer>
+  </div>
   </div>
 </template>
 
@@ -21,7 +50,19 @@ export default {
   },
   data(){
     return{
-      mydata: []
+      mydata: [],
+      list: [
+        {
+          src: 'https://placekitten.com/600/400',
+          w: 600,
+          h: 600
+        },
+        {
+          src: 'https://placekitten.com/1200/900',
+          w: 1200,
+          h: 900
+        }
+      ]
     }
   },
   computed:{
@@ -35,6 +76,58 @@ export default {
      this.drawLine();
   },
   methods: {
+    shareTo(stype){
+    var ftit = '';
+    var flink = '';
+    var lk = '';
+    //获取文章标题
+    ftit = document.title;
+    //获取网页中内容的第一张图片地址作为分享图
+    flink = document.images[0].src;
+    if(typeof flink == 'undefined'){
+        flink='';
+    }
+    //当内容中没有图片时，设置分享图片为网站logo
+    if(flink == ''){
+        lk = 'http://'+window.location.host+'/static/images/logo.png';
+    }
+    //如果是上传的图片则进行绝对路径拼接
+    if(flink.indexOf('/uploads/') != -1) {
+        lk = 'http://'+window.location.host+flink;
+    }
+    //百度编辑器自带图片获取
+    if(flink.indexOf('ueditor') != -1){
+        lk = flink;
+    }
+    // //qq空间接口的传参
+    // if(stype=='qzone'){
+    //     window.open('https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+document.location.href+'?sharesource=qzone&title='+ftit+'&pics='+lk+'&summary='+document.querySelector('meta[name="description"]').getAttribute('content'));
+    // }
+    //新浪微博接口的传参
+    if(stype=='sina'){
+        window.open('http://service.weibo.com/share/share.php?url='+encodeURIComponent("http://127.0.0.1:8081/biomedical/#/demand-details/25")+'&title='+ftit+'&pic='+lk+'&appkey=2706825840');
+    }
+    //qq好友接口的传参
+    if(stype == 'qq'){
+        window.open('http://connect.qq.com/widget/shareqq/index.html?url=http://127.0.0.1:8081/biomedical/#/demand-details/25&title=服务&pics=');
+    }
+    //生成二维码给微信扫描分享，php生成，也可以用jquery.qrcode.js插件实现二维码生成
+    if(stype == 'wechat'){
+        window.open('http://zixuephp.net/inc/qrcode_img.php?url=http://47.104.98.71:18781/biomedical/index.html#/service-details/44');
+    }
+},
+
+    toQQ(){
+        
+    },
+    // 即将关闭的时候，调用这个处理函数
+    closeHandler() {
+      console.log('closeHandler')
+    },
+    // 完全关闭之后，调用这个函数清理资源
+    destroyHandler() {
+      console.log('destroyHandler')
+    },
     textChange(){
         this.$store.dispatch('ChangeTest','456')
         console.log(this.$store.getters.test1)
