@@ -1,6 +1,6 @@
-var path = require('path');
+var path = require('path')
 module.exports = {
-  outputDir:'vuecli3',
+  outputDir: 'vuecli3',
   publicPath: './',
   devServer: {
     // 设置主机地址
@@ -9,7 +9,7 @@ module.exports = {
     // port: '8080',
     // 打开浏览器
     open: true,
-    port: 9000,
+    port: 9000
     // 设置代理
     // proxy: {
     //   '/api': {
@@ -21,7 +21,7 @@ module.exports = {
     // }
   },
   configureWebpack: {
-    resolve: { extensions: [".ts", ".tsx", ".js", ".json"] },
+    resolve: { extensions: ['.ts', '.tsx', '.js', '.json'] },
     module: {
       rules: [
         {
@@ -29,7 +29,7 @@ module.exports = {
           loader: 'ts-loader',
           exclude: /node_modules/,
           options: {
-            appendTsSuffixTo: [/\.vue$/],
+            appendTsSuffixTo: [/\.vue$/]
           }
         }
       ]
