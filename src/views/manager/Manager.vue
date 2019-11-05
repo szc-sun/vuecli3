@@ -5,179 +5,194 @@
   </div>
 </template>
 <script>
-import china from 'echarts/map/json/china.json'
-import shanghai from 'echarts/map/json/province/shanghai.json'
-import 'echarts/map/json/province/hebei.json'
-import 'echarts/map/json/province/shanxi.json'
-import 'echarts/map/json/province/neimenggu.json'
-import 'echarts/map/json/province/liaoning.json'
-import 'echarts/map/json/province/jilin.json'
-import 'echarts/map/json/province/heilongjiang.json'
-import 'echarts/map/json/province/jiangsu.json'
-import 'echarts/map/json/province/zhejiang.json'
-import 'echarts/map/json/province/anhui.json'
-import 'echarts/map/json/province/fujian.json'
-import 'echarts/map/json/province/jiangxi.json'
-import 'echarts/map/json/province/shandong.json'
-import 'echarts/map/json/province/henan.json'
-import 'echarts/map/json/province/hubei.json'
-import 'echarts/map/json/province/hunan.json'
-import 'echarts/map/json/province/guangdong.json'
-import 'echarts/map/json/province/guangxi.json'
-import 'echarts/map/json/province/hainan.json'
-import 'echarts/map/json/province/sichuan.json'
-import 'echarts/map/json/province/guizhou.json'
-import 'echarts/map/json/province/yunnan.json'
-import 'echarts/map/json/province/xizang.json'
-import 'echarts/map/json/province/shanxi1.json'
-import 'echarts/map/json/province/gansu.json'
-import 'echarts/map/json/province/qinghai.json'
-import 'echarts/map/json/province/ningxia.json'
-import 'echarts/map/json/province/xinjiang.json'
-import 'echarts/map/json/province/beijing.json'
-import 'echarts/map/json/province/tianjin.json'
-import 'echarts/map/json/province/chongqing.json'
-import 'echarts/map/json/province/xianggang.json'
-import 'echarts/map/json/province/aomen.json'
-import 'echarts/map/json/province/taiwan.json'
 export default {
   data() {
     return {
-      mydata: [],
-      provinces: ['shanghai', 'hebei', 'shanxi', 'neimenggu', 'liaoning', 'jilin', 'heilongjiang', 'jiangsu', 'zhejiang', 'anhui', 'fujian', 'jiangxi', 'shandong', 'henan', 'hubei', 'hunan', 'guangdong', 'guangxi', 'hainan', 'sichuan', 'guizhou', 'yunnan', 'xizang', 'shanxi1', 'gansu', 'qinghai', 'ningxia', 'xinjiang', 'beijing', 'tianjin', 'chongqing', 'xianggang', 'aomen', 'taiwan'],
-      provincesText: ['上海', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '北京', '天津', '重庆', '香港', '澳门', '台湾'],
-      showName: 'china',
-      choose: {
-        provinces: '',
-        city: ''
-      }
+      clickCityCode: null,
+      mapJson: null,
+      level: 1
     }
   },
   mounted() {
-    console.log(china, shanghai)
-    const _this = this
-    this.drawLine(_this.showName)
+    this.drawLine(this.level, this.mapJson, '中国')
   },
   watch: {
-    showName(val) {
-      this.drawLine(val)
-    }
   },
   methods: {
-    drawLine(showName) {
-      this.$echarts.registerMap('shanghai', shanghai)
+    drawLine(levle, mapJson, name) {
+      console.log(5555, levle, mapJson, name)
       var _this = this
-      this.mydata = [
-        { name: '北京', value: '100' }, { name: '天津', value: this.randomData() },
-        { name: '上海', value: this.randomData() }, { name: '重庆', value: this.randomData() },
-        { name: '河北', value: this.randomData() }, { name: '河南', value: this.randomData() },
-        { name: '云南', value: this.randomData() }, { name: '辽宁', value: this.randomData() }
-        // {name: '黑龙江',value: this.randomData() },{name: '湖南',value: this.randomData() },
-        // {name: '安徽',value: this.randomData() },{name: '山东',value: this.randomData() },
-        // {name: '新疆',value: this.randomData() },{name: '江苏',value: this.randomData() },
-        // {name: '浙江',value: this.randomData() },{name: '江西',value: this.randomData() },
-        // {name: '湖北',value: this.randomData() },{name: '广西',value: this.randomData() },
-        // {name: '甘肃',value: this.randomData() },{name: '山西',value: this.randomData() },
-        // {name: '内蒙古',value: this.randomData() },{name: '陕西',value: this.randomData() },
-        // {name: '吉林',value: this.randomData() },{name: '福建',value: this.randomData() },
-        // {name: '贵州',value: this.randomData() },{name: '广东',value: this.randomData() },
-        // {name: '青海',value: this.randomData() },{name: '西藏',value: this.randomData() },
-        // {name: '四川',value: this.randomData() },{name: '宁夏',value: this.randomData() },
-        // {name: '海南',value: this.randomData() },{name: '台湾',value: this.randomData() },
-        // {name: '香港',value: this.randomData() },{name: '澳门',value: this.randomData() }
-      ]
       // 基于准备好的dom，初始化echarts实例
-      const myMap = this.$echarts.init(document.getElementById('myMap'))
-      myMap.off('click')
-      myMap.on('click', function(param) {
-        console.log(param.name, _this.provincesText)
-        // 遍历取到provincesText 中的下标  去拿到对应的省js
-        for (var i = 0, len = _this.provincesText.length; i < len; i++) {
-          if (param.name == _this.provincesText[i]) {
-            // 显示对应省份的方法
-            _this.showName = _this.provincesText[i]
-            _this.choose.provinces = param.name
-            break
-          } else {
-            _this.choose.city = param.name
-            _this.showName = 'china'
-          }
+      const mapSample = _this.$echarts.init(document.getElementById('myMap'));
+      (_this.getMapJson(name, mapJson)).then(res => {
+        _this.mapJson = res
+        // console.log(111, res, _this.$echarts.getMap(name))
+        // 中国地图和已注册的地球不用再注册
+        if (name !== '中国' && !_this.$echarts.getMap(name)) {
+          _this.$echarts.registerMap(name, res)
         }
-        console.log(123, param, _this.choose)
-        // _this.drawLine(_this.showName)
-      })
-      // 绘制图表
-      myMap.setOption({
-        backgroundColor: '#F7F7F7',
-        title: {
-          text: '损失统计',
-          subtext: '数据来自国家统计局'
+        var series = [
+        // 中国地图省份颜色
+          {
+            type: 'map',
+            map: 'china',
+            geoIndex: 0,
+            aspectScale: 0.2, // 长宽比
+            showLegendSymbol: false, // 存在legend时显示
+            label: {
+              normal: {
+                show: false
+              },
+              emphasis: {
+                show: false,
+                textStyle: {
+                  color: '#fff'
+                }
+              }
+            },
+            roam: true,
+            itemStyle: {
+              normal: {
+                areaColor: '#031525',
+                borderColor: '#3B5077'
+              },
+              emphasis: {
+                areaColor: '#2B91B7'
+              }
+            },
+            animation: false,
+            data: _this.sampleResourceData
+
+          }
+        ]
+        mapSample.setOption({
+          backgroundColor: '#040B1E',
+          title: {
+          // text: '全国节点',
+          // subtext: '数据来自国家统计局'
           // sublink: 'http://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E8%A1%8C%E6%94%BF%E5%8D%80%E5%8A%83#cite_note-12'
-        },
-        tooltip: {
-          trigger: 'item',
-          formatter: '{b}<br/>{c}'
-        },
-        toolbox: {
-          show: true,
-          orient: 'vertical',
-          left: 'right',
-          top: 'center'
+          },
+          tooltip: {
+            trigger: 'item',
+            formatter: '{b}<br/>{c}万份'
+          },
+          toolbox: {
+            show: true,
+            orient: 'vertical',
+            left: 'right',
+            top: 'center'
           // feature: {
           //     dataView: {readOnly: false},
           //     restore: {},
           //     saveAsImage: {}
           // }
-        },
-        visualMap: {
-          max: 50000,
-          min: 0,
-          text: ['高', '低'],
-          realtime: false,
-          calculable: false,
-          itemHeight: '500',
-          inverse: true, // 翻转
-          orient: 'horizontal',
-          inRange: {
-            color: ['#FFFFFF', '#096DD9']
-          }
-        },
-        geo: {
-          map: 'china',
-          // zoom: 1.1,
-          // top: 45,
-          zoom: 1.2,
-          top: 100,
-          // bottom: 110,
-          label: {
-            emphasis: {
-              show: false
+          },
+          visualMap: {
+            show: true,
+            type: 'piecewise',
+            left: '85%',
+            bottom: '20%',
+            splitNumber: 5,
+            calculable: false,
+            itemWidth: 14,
+            itemHeight: 14,
+            itemGap: 15,
+            align: 'left',
+            itemSymbol: 'roundRect',
+            seriesIndex: [0],
+            min: 0,
+            max: 1000,
+            // pieces: [
+
+            //   { color: 'rgba(16,38,84,1)', gt: 0, lte: 100, label: '0~100万份', symbol: 'image://static/homeIcon/fangxing1.svg', symbolSize: 20 },
+            //   { color: 'rgba(19,43,97,1)', gt: 100, lte: 500, label: '100~500万份', symbol: 'image://static/homeIcon/fangxing2.svg', symbolSize: 20 },
+            //   { color: 'rgba(26,62,137,1)', gt: 500, lte: 1000, label: '500~1000万份', symbol: 'image://static/homeIcon/fangxing3.svg', symbolSize: 20 },
+            //   { color: 'rgba(33,82,181,1)', gt: 1000, label: '1000万份以上', symbol: 'image://static/homeIcon/fangxing4.svg', symbolSize: 20 },
+            //   { value: -1, label: '正常', symbol: 'image://static/homeIcon/zhengchang.svg' },
+            //   { value: -2, label: '失联', symbol: 'image://static/homeIcon/shilian.svg' },
+            //   { value: -3, label: '故障', symbol: 'image://static/homeIcon/guzhang.svg' },
+            //   { value: -4, label: '重点样本资源\n监控事件', symbol: 'image://static/homeIcon/zhongdian(2).svg' }
+            // ],
+            // right: 40,
+            // bottom: 170,
+            textStyle: {
+              color: '#4ac7f5',
+              fontSize: 14,
+              lineHeight: 18
             }
           },
-          roam: false, // 是否允许缩放
-          itemStyle: {
-            normal: {
-              color: '#DAE8FF', // 地图背景色
-              borderColor: '#6cb0e0', // 省市边界线00fcff 516a89
-              borderWidth: 1
+          geo: {
+            map: name === '中国' ? 'china' : name,
+            // zoom: 1.1,
+            // top: 45,
+            zoom: 1.1,
+            top: 70,
+            // bottom: 110,
+            label: {
+              emphasis: {
+                show: false
+              }
             },
-            emphasis: {
-              color: '#828DD9', // 鼠标悬浮背景
-              borderColor: '#6cb0e0'
+            roam: true, // 是否允许缩放
+            itemStyle: {
+              normal: {
+                color: 'rgba(10,22,52,1)', // 地图背景色
+                borderColor: '#2E72F7', // 省市边界线00fcff 516a89
+                borderWidth: 1
+              },
+              emphasis: {
+                color: '#828DD9', // 鼠标悬浮背景
+                borderColor: '#6cb0e0'
+              }
             }
-          }
-        },
-        series: [
+          },
+          series: series
+        }, true)
+      })
+      // console.log(2222, china)
+      // this.$echarts.registerMap('中国', s.data)
 
-        ]
-      }, true)
+      window.addEventListener('resize', function() {
+        mapSample.resize()
+      })
+      mapSample.off()
+      // 点击事件,根据点击某个省份计算出这个省份的数据
+      mapSample.on('click', function(params) {
+        // 逻辑控制
+        // _this.drawLine(_this.level, _this.mapJson, '中国')
+        _this.level === 3 ? _this.drawLine(_this.level, _this.mapJson, '中国') : _this.drawLine(_this.level, _this.mapJson, params.name)
+        // console.log(444444444, params.name)
+      })
     },
-    randomData() {
-      return Math.round(Math.random() * 500)
+    // 动态引入地图json文件，在此函数用bus总线动态改变兄弟组件数据
+    getMapJson(name, nowJson) {
+      var _this = this
+      var id = 0
+      var showMapFn = () => import('echarts/map/json/china.json')
+      if (name === '中国' || _this.level === 3 || !nowJson) {
+        _this.level = 1
+        showMapFn = () => import('echarts/map/json/china.json')
+      } else if (_this.level === 1 && nowJson) { // 省级地图
+        _this.level = 2
+        id = this.getId(name, nowJson)
+        showMapFn = () => import('./city/' + id + '.json')
+      } else if (_this.level === 2 && nowJson) {
+        _this.level = 3
+        id = this.getId(name, nowJson)
+        showMapFn = () => import('./city/' + id + '.json')
+      }
+      return showMapFn()
+    },
+    getId(name, nowJson) {
+      var id = null
+      nowJson.features.forEach((val, index, arr) => {
+        if (name === val.properties.name) {
+          id = val.id
+        }
+      })
+      return id
     }
-
   }
-
 }
 </script>
 <style lang="scss" scoped>
