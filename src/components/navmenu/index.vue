@@ -14,7 +14,8 @@
 <style>
 .nav-box{
 	height:calc(100% - 52px);
-	overflow-y: scroll;
+  overflow-x:hidden;
+	overflow-y: auto;
 	/*overflow-x:hidden;*/
 }
 .nav-box::-webkit-scrollbar{
@@ -23,8 +24,8 @@
 }
 .nav-box::-webkit-scrollbar-thumb{
 	border-radius:10px;
-	box-shadow:inset 0 0 6px #ccc;
-	-webkit-box-shadow:inset 0 0 6px #ccc;
+	box-shadow:inset 0 0 6px #f2f2f2;
+	-webkit-box-shadow:inset 0 0 6px #f2f2f2;
 	background-color: rgba(144,147,153,.5);
 }
 
