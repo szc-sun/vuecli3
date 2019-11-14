@@ -19,10 +19,10 @@ export default Vue.extend({
     };
   },
   created(){
-    console.log('created',this.msg)
+    // console.log('created',this.msg)
   },
   mounted() {
-    console.log('mounted')
+    // console.log('mounted')
   },
   computed:{
     // test: {
@@ -40,13 +40,13 @@ export default Vue.extend({
   },
   watch:{
     msg(val:any){
-      console.log('watch',val)
+      // console.log('watch',val)
     }
   },
   methods:{
     msgBtn(ev:any){
       this.msg = "点击了typescript"
-      console.log('点击事件',ev)
+      // console.log('点击事件',ev)
     }
   }
 })

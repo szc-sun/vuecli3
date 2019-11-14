@@ -63,7 +63,7 @@ export default {
 	        ].concat(matched)
 	      }
 	      this.levelList = matched
-	      console.log('levelList',this.levelList)
+	      // console.log('levelList',this.levelList)
 	    }
 	}
 }

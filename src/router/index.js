@@ -59,6 +59,26 @@ export const constantRouterMap = [
     }]
   },
   {
+    path: '/search-engine',
+    name: 'search-engine',
+    redirect: '/search-engine/index',
+    component: MainPart,
+    // hidden: true,
+    children: [
+      {
+        path: 'index',
+        name: 'index',
+        meta: {
+          // roles: ['数据管理'],
+          title: '搜索引擎',
+          icon: 'el-icon-search'
+        },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/search-engine/index')
+      }
+
+    ]
+  },
+  {
     path: '/drag-table',
     name: 'drag-table',
     redirect: '/drag-table/index',

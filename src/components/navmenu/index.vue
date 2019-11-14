@@ -81,21 +81,21 @@ export default {
   },
   watch: {
     isCollapse: function(val) {
-      console.log(val)
+      // console.log(val)
     }
   },
   mounted() {
-    console.log(this.$router)
+    // console.log(this.$router)
   },
   methods: {
     changeIsCollapse() {
       this.isCollapse = !this.isCollapse
     },
     handleOpen(key, keyPath) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
     }
   }
 }

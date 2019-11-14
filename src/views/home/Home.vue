@@ -57,7 +57,7 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import TinymceText from '@/components/tinymce/TinymceText'
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
     HelloWorld,
     TinymceText
@@ -133,18 +133,18 @@ export default {
     },
     // 即将关闭的时候，调用这个处理函数
     closeHandler() {
-      console.log('closeHandler')
+      // console.log('closeHandler')
     },
     // 完全关闭之后，调用这个函数清理资源
     destroyHandler() {
-      console.log('destroyHandler')
+      // console.log('destroyHandler')
     },
     textChange() {
       this.$store.dispatch('ChangeTest', '456')
-      console.log(this.$store.getters.test1)
+      // console.log(this.$store.getters.test1)
     },
     release(content) {
-      console.log(content)
+      // console.log(content)
     },
 
     drawLine() {

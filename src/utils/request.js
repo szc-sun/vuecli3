@@ -21,21 +21,21 @@ service.interceptors.request.use(
       Promise.reject(error)
     }
     // Do something with request error
-    console.log(error) // for debug
+    // console.log(error) // for debug
   })
 // response 拦截器
 service.interceptors.response.use(
   response => {
     const res = response.data
-    console.log(response, '错误信息')
+    // console.log(response, '错误信息')
     if (!res.success) {
-      console.log(res, '错误信息')
+      // console.log(res, '错误信息')
     } else {
       return response.data
     }
   },
   error => {
-    console.log('err' + error) // for debug
+    // console.log('err' + error) // for debug
     return Promise.reject(error)
   }
 )

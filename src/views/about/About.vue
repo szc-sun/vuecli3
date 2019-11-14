@@ -43,18 +43,18 @@ export default {
       // console.log(123)
     },
     onFocus(event) {
-      console.log('获取焦距123', event)
+      // console.log('获取焦距123', event)
     },
     onBlur(event) {
-      console.log('失去焦距456', event)
+      // console.log('失去焦距456', event)
     },
     onInput(value) {
       // this.value = value
-      console.log('input事件', value)
+      // console.log('input事件', value)
     },
     onChange(event) {
       // this.value = event.target.value
-      console.log('change事件', event)
+      // console.log('change事件', event)
     }
   }
 }

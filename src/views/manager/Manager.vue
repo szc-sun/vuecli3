@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     drawLine(levle, mapJson, name) {
-      console.log(5555, levle, mapJson, name)
+      // console.log(5555, levle, mapJson, name)
       var _this = this
       // 基于准备好的dom，初始化echarts实例
       const mapSample = _this.$echarts.init(document.getElementById('myMap'));
@@ -176,9 +176,11 @@ export default {
         _this.level = 2
         id = this.getId(name, nowJson)
         showMapFn = () => import('./city/' + id + '.json')
+        // showMapFn = () => import('@/assets/map/city/' + id + '.json')
       } else if (_this.level === 2 && nowJson) {
         _this.level = 3
         id = this.getId(name, nowJson)
+        // showMapFn = () => import('../../assets/map/city/' + id + '.json')
         showMapFn = () => import('./city/' + id + '.json')
       }
       return showMapFn()
