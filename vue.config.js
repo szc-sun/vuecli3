@@ -11,7 +11,7 @@ module.exports = {
     open: true,
     port: 9000,
     // 设置代理
-    proxy: {
+    // proxy: {
       // // 百度搜索
       // '/fuzzy/': {
       //   target: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/',
@@ -30,6 +30,7 @@ module.exports = {
       //     '^/weather/': '/'
       //   }
       // }
+    // }
 
     // proxy: {
     //   '/api': {
@@ -39,7 +40,6 @@ module.exports = {
     //     }
     //   }
     // }
-    }
   },
   configureWebpack: {
     resolve: { extensions: ['.ts', '.tsx', '.js', '.json'] },
