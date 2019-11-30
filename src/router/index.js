@@ -71,7 +71,8 @@ export const constantRouterMap = [
         meta: {
           // roles: ['数据管理'],
           title: '搜索引擎',
-          icon: 'el-icon-search'
+          icon: 'el-icon-search',
+          keepAlive: true
         },
         component: () => import(/* webpackChunkName: "about" */ '@/views/search-engine/index')
       }

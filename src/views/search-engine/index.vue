@@ -29,15 +29,24 @@
       @click="search">
     </i>
     <template slot-scope="{ item }">
-    <div class="name">{{ item }}</div>
-  </template>
+      <div class="name">{{ item }}</div>
+    </template>
     </el-autocomplete>
   </el-form>
+  <div class="list-box" >
+    <div :class="{'search-con':true,'show':show === index}" v-for="(value,index) in searchData.list" :key = "index" @click="clickIndex(index)">
+      <div class="title">{{value.title}}</div>
+      <div class="con">
+        {{value.data}}
+      </div>
+    </div>
+  </div>
  </div>
  </template>
 <script>
 // import vueJsonp from 'vue-jsonp'
 export default {
+  name: 'SearchEngine',
   data() {
     return {
       form: {},
@@ -53,10 +62,32 @@ export default {
         value: 'Google',
         label: '谷歌'
       }],
-      value: 'Baidu'
+      value: 'Baidu',
+      show: null,
+      searchData: {
+        count: 3,
+        list: [
+          {
+            title: 'title1',
+            data: '搜索信息1'
+          },
+          {
+            title: 'title2',
+            data: '搜索信息2'
+          },
+          {
+            title: 'title3',
+            data: '搜索信息3'
+          }
+        ]
+      }
     }
   },
+  activated() {
+    console.log('activated')
+  },
   mounted() {
+    console.log('mounted')
     // this.restaurants = this.loadAll()
     this.getFuzzyQuery()
   },
@@ -66,20 +97,20 @@ export default {
     }
   },
   methods: {
-    search(){
+    search() {
       console.log('查询')
     },
     // 获取模糊查询数组
     getFuzzyQuery(value) {
-      return this.$jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su' , {
-        wd:this.state2,
+      return this.$jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', {
+        wd: this.state2,
         callbackQuery: 'cb',
         callbackName: 'callback'
-      }).then((res)=>{
+      }).then((res) => {
         // window.callback = function(res) {
         //   return res
         // }
-      // 　console.log(123,res)
+      // console.log(123,res)
         return res.s
       })
     },
@@ -93,7 +124,7 @@ export default {
       return json
     },
     querySearch(queryString, cb) {
-      this.getFuzzyQuery().then(res=>{
+      this.getFuzzyQuery().then(res => {
         this.restaurants = res
         cb(this.restaurants)
       })
@@ -101,6 +132,10 @@ export default {
     handleSelect(item) {
       this.state2 = item
       // console.log(item)
+    },
+    clickIndex(index) {
+      // console.log(this)
+      this.show = index
     }
   }
 }
@@ -127,6 +162,37 @@ export default {
         }
       }
     }
+  }
+  $height:200px;
+  $str: 'color';
+  $con:'con';
+  $arr:(
+    (width:100px,height:50px,background: #fff),
+    (width:200px,height:100px,background: #fff),
+    (width:300px,height:150px,background: #fff)
+  );
+  .search-#{$con}{
+    height: $height;
+    width:500px;
+    background: #f2f2f2;
+    border:1px solid #ccc;
+    #{$str}:#d00;
+    @for $i from 1 through length($arr) {
+      $item: nth($arr, $i);
+      .#{$con}{
+        width: map-get($item, width);
+        height: map-get($item, height);
+      }
+    }
+    @mixin left01($n) {  //不带参数
+      font-size: (30*$n);
+    }
+    .title{
+    @include left01(2px)
+    }
+  }
+  .show{
+    background: #ccc
   }
 }
 </style>

@@ -84,6 +84,9 @@ export default {
       return this.$store.getters.test1
     }
   },
+  activated() {
+    console.log('activated')
+  },
   mounted() {
     // console.log(this.$store)
     // this.$store.dispatch('Login', '')

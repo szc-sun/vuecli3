@@ -10,7 +10,10 @@
       <el-container>
         <el-main>
           <Breadcrumb/>
-          <router-view />
+          <keep-alive>
+            <router-view v-if="$route.meta.keepAlive"/>
+          </keep-alive>
+          <router-view v-if="!$route.meta.keepAlive"/>
         </el-main>
       </el-container>
     </el-container>
