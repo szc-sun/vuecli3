@@ -41,7 +41,7 @@ import 'echarts/map/js/province/aomen.js'
 import 'echarts/map/js/province/taiwan.js'
 
 export default {
-  name: 'echarts-china2',
+  name: 'EchartsChina2',
   data() {
     return {
       mydata: [],
@@ -92,7 +92,7 @@ export default {
         // console.log(param.name, _this.provincesText)
         // 遍历取到provincesText 中的下标  去拿到对应的省js
         for (var i = 0, len = _this.provincesText.length; i < len; i++) {
-          if (param.name == _this.provincesText[i]) {
+          if (param.name === _this.provincesText[i]) {
             // 显示对应省份的方法
             _this.showName = _this.provincesText[i]
             _this.choose.provinces = param.name

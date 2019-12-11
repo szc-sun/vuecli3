@@ -30,6 +30,7 @@ export default {
   name: 'Header',
   data() {
     return {
+      url: 'http://dmimg.5054399.com/allimg/pkm/pk/22.jpg',
       selectValue: '',
       options: [
         {
