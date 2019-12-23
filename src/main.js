@@ -17,6 +17,11 @@ import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 import vueJsonp from 'vue-jsonp'
 
+// 引入样式文件
+import 'leaflet/dist/leaflet.css'
+import * as L from 'leaflet'
+Vue.L = Vue.prototype.$L = L
+
 Vue.use(vueJsonp)
 
 Vue.use(Viewer)
