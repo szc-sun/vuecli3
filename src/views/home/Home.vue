@@ -51,9 +51,9 @@
     <hr>
     文件预览
     <!-- 本地路径微软链接报错 -->
-    <button @click="showFileView('docx','http://localhost:9000/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.docx')">word文本</button>
-    <button @click="showFileView('xlsx','http://localhost:9000/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.xlsx')">excel文本</button>
-    <button @click="showFileView('pptx','http://localhost:9000/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.pptx')">ppt文本</button>
+    <button @click="showFileView('docx','https://raw.githubusercontent.com/szc-sun/vuecli3/dev/public/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.docx')">word文本</button>
+    <button @click="showFileView('xlsx','https://raw.githubusercontent.com/szc-sun/vuecli3/dev/public/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.xlsx')">excel文本</button>
+    <button @click="showFileView('pptx','https://raw.githubusercontent.com/szc-sun/vuecli3/dev/public/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.pptx')">ppt文本</button>
     <button @click="showFileView('pdf','http://localhost:9000/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.pdf')">pdf文本</button>
     <FileView :FileViewData="FileViewData" v-if="FileViewData.show"/>
 
