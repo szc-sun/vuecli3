@@ -41,13 +41,22 @@
         <hr/>
         图片预览插件二（这个好用v-viewer）
         <viewer>
-        <img
-            width="150"
-            v-for="(src,index) in list"
-            :src="src.src"
-            :key="index"
-            >
-    </viewer>
+            <img
+                width="150"
+                v-for="(src,index) in list"
+                :src="src.src"
+                :key="index"
+                >
+        </viewer>
+    <hr>
+    文件预览
+    <!-- 本地路径微软链接报错 -->
+    <button @click="showFileView('docx','http://localhost:9000/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.docx')">word文本</button>
+    <button @click="showFileView('xlsx','http://localhost:9000/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.xlsx')">excel文本</button>
+    <button @click="showFileView('pptx','http://localhost:9000/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.pptx')">ppt文本</button>
+    <button @click="showFileView('pdf','http://localhost:9000/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.pdf')">pdf文本</button>
+    <FileView :FileViewData="FileViewData" v-if="FileViewData.show"/>
+
     </div>
   </div>
 </template>
@@ -56,11 +65,13 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import TinymceText from '@/components/tinymce/TinymceText'
+import FileView from '@/components/FileView'
 export default {
   name: 'Home',
   components: {
     HelloWorld,
-    TinymceText
+    TinymceText,
+    FileView
   },
   data() {
     return {
@@ -76,7 +87,12 @@ export default {
           w: 1200,
           h: 900
         }
-      ]
+      ],
+      FileViewData: {
+        show: false,
+        url: '',
+        type: 'pdf'
+      }
     }
   },
   computed: {
@@ -93,6 +109,16 @@ export default {
     this.drawLine()
   },
   methods: {
+    // 预览插件显示
+    showFileView(type, url) {
+      this.FileViewData = {
+        type: type,
+        url: url,
+        show: true
+      }
+      // this.FileViewData.show = true
+    },
+    // 分享
     shareTo(stype) {
       var ftit = ''
       var flink = ''
