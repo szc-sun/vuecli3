@@ -38,7 +38,7 @@ export default {
   components: { Sidebar },
   data() {
     return {
-      isCollapse: true,
+      isCollapse: false,
       menudata: [{
         id: '1',
         title: '首页',
