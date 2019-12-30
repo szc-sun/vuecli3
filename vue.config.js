@@ -11,25 +11,35 @@ module.exports = {
     open: true,
     port: 9000,
     // 设置代理
+    proxy: {
+      '/api': { // 命名
+        target: 'http://203.207.224.108:2050', // 转发地址
+        changeOrigin: true, // 允许跨域
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+
     // proxy: {
-      // // 百度搜索
-      // '/fuzzy/': {
-      //   target: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/',
-      //   changeOrigin: true,
-      //   pathRewrite: {
-      //     '^/fuzzy/': ''
-      //   }
-      // },
-      // // 百度天气接口http://apistore.baidu.com/microservice/weather?cityid=
-      // // 获取城市编码接口:"http://apistore.baidu.com/microservice/cityinfo?cityname= (不一定能用)
-      // //  http://apistore.baidu.com/microservice/weather?citypinyin=(能用)
-      // '/weather/': {
-      //   target: 'http://apistore.baidu.com/microservice',
-      //   changeOrigin: true,
-      //   pathRewrite: {
-      //     '^/weather/': '/'
-      //   }
-      // }
+    // // 百度搜索
+    // '/fuzzy/': {
+    //   target: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/',
+    //   changeOrigin: true,
+    //   pathRewrite: {
+    //     '^/fuzzy/': ''
+    //   }
+    // },
+    // // 百度天气接口http://apistore.baidu.com/microservice/weather?cityid=
+    // // 获取城市编码接口:"http://apistore.baidu.com/microservice/cityinfo?cityname= (不一定能用)
+    // //  http://apistore.baidu.com/microservice/weather?citypinyin=(能用)
+    // '/weather/': {
+    //   target: 'http://apistore.baidu.com/microservice',
+    //   changeOrigin: true,
+    //   pathRewrite: {
+    //     '^/weather/': '/'
+    //   }
+    // }
     // }
 
     // proxy: {

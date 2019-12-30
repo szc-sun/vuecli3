@@ -13,6 +13,7 @@
     "core-js": "^2.6.11",
     "echarts": "^4.5.0",
     "element-ui": "^2.13.0",
+    "esri-leaflet": "^2.3.2",
     "font-awesome": "^4.7.0",
     "leaflet": "^1.6.0",
     "path-to-regexp": "^3.2.0",
