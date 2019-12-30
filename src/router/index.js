@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import MainPart from '@/views/mainPart'
 import leafletRouter from './modules/leaflet-router'
+import maptalksRouter from './modules/maptalks-router'
 Vue.use(Router)
 
 // 公用权限路由
@@ -61,6 +62,7 @@ export const constantRouterMap = [
     ]
   },
   leafletRouter,
+  maptalksRouter,
   {
     path: '/search-engine',
     name: 'search-engine',
