@@ -9,17 +9,24 @@ module.exports = {
     // port: '8080',
     // 打开浏览器
     open: true,
-    port: 9000,
+    port: 9000
     // 设置代理
-    proxy: {
-      '/api': { // 命名
-        target: 'http://203.207.224.108:2050', // 转发地址
-        changeOrigin: true, // 允许跨域
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
-    }
+    // proxy: {
+    //   '/api': { // 命名
+    //     target: 'http://203.207.224.108:2050', // 转发地址
+    //     changeOrigin: true, // 允许跨域
+    //     pathRewrite: {
+    //       '^/api': ''
+    //     }
+    //   },
+    //   '/api2': { // 命名
+    //     target: 'http://203.207.224.103:18180', // 转发地址
+    //     changeOrigin: true, // 允许跨域
+    //     pathRewrite: {
+    //       '^/api2': ''
+    //     }
+    //   }
+    // }
 
     // proxy: {
     // // 百度搜索
