@@ -36,7 +36,7 @@ export default {
         skin_url: '/tinymce/skins/ui/oxide-dark',
         height: 500,
         // 插件
-        plugins: 'link lists image code table colorpicker textcolor wordcount contextmenu',
+        plugins: 'link lists image code table wordcount ',
         // 工具栏
         toolbar:
                 'bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo | link unlink image code | removeformat',

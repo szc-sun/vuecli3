@@ -91,7 +91,7 @@ export const constantRouterMap = [
     // hidden: true,
     children: [{
       path: 'index',
-      name: 'index',
+      name: 'dragindex',
       meta: {
       // roles: ['数据管理'],
         title: '表格ts',
@@ -227,32 +227,33 @@ export const asyncRouterMap = [
       title: '关于',
       icon: 'el-icon-setting'
     },
-    children: [{
-      path: 'index',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '@/views/about/About.vue'),
-      meta: {
-        roles: ['关于'],
-        title: '关于',
-        icon: 'el-icon-setting'
+    children: [
+      {
+        path: 'index',
+        name: 'about',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/About.vue'),
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-setting'
+        }
+      },
+      {
+        path: 'Leaflet',
+        name: 'AboutLeaflet',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/Leaflet.vue'),
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-setting'
+        }
       }
-    },
-    {
-      path: 'Leaflet',
-      name: 'Leaflet',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '@/views/about/Leaflet.vue'),
-      meta: {
-        roles: ['关于'],
-        title: '关于',
-        icon: 'el-icon-setting'
-      }
-    }
     ]
   },
   {
