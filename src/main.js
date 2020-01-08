@@ -16,6 +16,7 @@ Vue.use(VuePreview)
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 import vueJsonp from 'vue-jsonp'
+import './common/font/font.css'
 
 // 引入样式文件
 import 'leaflet/dist/leaflet.css'

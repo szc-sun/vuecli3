@@ -1,6 +1,7 @@
 <template>
     <div class="home">
-        <div>中英文切换测试：{{$t('message.text')}}</div>
+        <div >中英文切换测试：{{$t('message.text')}}</div>
+        <div style="font-family: sunfont;">加入自定义字体：sunfont</div>
         <hr/>
         <div style = "display:flex">
             分享到：
