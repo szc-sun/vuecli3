@@ -32,7 +32,7 @@ export default {
         },
         {
           title: 'test01',
-          url: 'http://203.207.224.103:18180/mapserver/tms/services/whbd/MapServer'
+          url: 'http://203.207.223.39:18180/mapserver/tms/services/whbd/MapServer'
           // url: '/api2/mapserver/tms/services/whbd/MapServer'
         }
       ]
