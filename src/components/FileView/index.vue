@@ -31,7 +31,6 @@ export default {
     }
   },
   mounted() {
-    this.type()
     console.log(this.FileViewData)
   },
 
