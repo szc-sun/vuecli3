@@ -181,7 +181,7 @@ export default {
     }
   },
   mounted() {
-    console.log('路由', this.$store.getters.permission_routers)
+    // console.log('路由', this.$store.getters.permission_routers)
     // this.$nextTick(function() {
     //   this.menudata1 = this.$store.getters.permission_routers
     //   console.log('路由', this.$store.getters.permission_routers)

@@ -15,9 +15,18 @@ import VuePreview from 'vue2-preview'
 Vue.use(VuePreview)
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
+import vueJsonp from 'vue-jsonp'
+import './common/font/font.css'
+
+// 引入样式文件
+import 'leaflet/dist/leaflet.css'
+import * as L from 'leaflet'
+Vue.L = Vue.prototype.$L = L
+
+Vue.use(vueJsonp)
 
 Vue.use(Viewer)
-
+console.log('process', process, process.env.NODE_ENV, process.env.VUE_APP_API)
 // 这里是插件的默认设置
 Viewer.setDefaults({
   zIndexInline: 9999

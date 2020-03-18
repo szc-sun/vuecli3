@@ -30,6 +30,7 @@ export default {
   name: 'Header',
   data() {
     return {
+      url: 'http://dmimg.5054399.com/allimg/pkm/pk/22.jpg',
       selectValue: '',
       options: [
         {
@@ -44,7 +45,7 @@ export default {
   },
   created() {
     const that = this
-    console.log(localStorage.lang)
+    // console.log(localStorage.lang)
     that.selectValue = localStorage.lang === undefined ? 'cn' : localStorage.lang
   },
   computed: {
@@ -75,7 +76,7 @@ export default {
               const roles = []
               this.$store.dispatch('GenerateRoutes', { roles })
               this.$router.push('/login')
-              console.log(this.$store.getters.permission_routers, this.$router.options.routes)
+              // console.log(this.$store.getters.permission_routers, this.$router.options.routes)
             })
           } else {
             done()

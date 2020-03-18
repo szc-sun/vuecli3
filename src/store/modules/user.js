@@ -51,14 +51,14 @@ const user = {
     Login: ({ commit, dispatch, state, getters, rootGetters }, userInfo) => {
       return new Promise((resolve, reject) => {
         // var userInfo = { userName: 'admin', password: '123' }
-        console.log('userInfo', userInfo)
+        // console.log('userInfo', userInfo)
         login(userInfo).then(res => {
           var userData = res.data.filter((value, index, array) => {
             if (userInfo.userName === value.loginName && userInfo.password === value.userCode) {
               return value
             }
           })
-          console.log('userData', userData)
+          // console.log('userData', userData)
           if (userData.length > 0) {
             commit('SET_ROLES', userData[0].roles)
             commit('SET_ROLESNAME', userData[0].rolesName)

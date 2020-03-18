@@ -3,14 +3,17 @@
     <el-header>
       <Header></Header>
     </el-header>
-    <el-container>
+    <el-container class="container-con-main">
       <el-aside width="auto" style="height:100%;box-shadow: 10px 5px 5px #ccc;">
         <NavMenu />
       </el-aside>
       <el-container>
         <el-main>
           <Breadcrumb/>
-          <router-view />
+          <keep-alive>
+            <router-view v-if="$route.meta.keepAlive"/>
+          </keep-alive>
+          <router-view v-if="!$route.meta.keepAlive"/>
         </el-main>
       </el-container>
     </el-container>
@@ -34,3 +37,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.container-con-main{
+  height: calc(100% - 120px);
+}
+</style>

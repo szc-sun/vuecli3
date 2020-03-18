@@ -17,7 +17,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.getters.test1)
+    // console.log(this.$store.getters.test1)
   }
 }
 </script>

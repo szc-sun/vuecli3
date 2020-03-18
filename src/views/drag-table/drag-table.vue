@@ -1,13 +1,14 @@
 <template>
-	<div>
+  <div>
     <el-button type="primary" @click="msgBtn">{{msg}}</el-button>
-    <el-card shadow="always">
-      {{test}}
-    </el-card>
-	</div>
+    <el-card shadow="always">{{test}}</el-card>
+  </div>
 </template>
 <script lang='ts'>
-import { Component, Vue } from "vue-property-decorator";
+import {
+  // Component,
+  Vue
+} from 'vue-property-decorator';
 
 export default Vue.extend({
   components: {
@@ -15,16 +16,16 @@ export default Vue.extend({
   },
   data() {
     return {
-      msg:'typescript'
-    };
+      msg: 'typescript'
+    }
   },
-  created(){
-    console.log('created',this.msg)
+  created() {
+    // console.log('created',this.msg)
   },
   mounted() {
-    console.log('mounted')
+    // console.log('mounted')
   },
-  computed:{
+  computed: {
     // test: {
     //   // 需要标注有 `this` 参与运算的返回值类型
     //   get(): string {
@@ -38,20 +39,18 @@ export default Vue.extend({
       return this.msg
     }
   },
-  watch:{
-    msg(val:any){
-      console.log('watch',val)
+  watch: {
+    msg(val: any) {
+      // console.log('watch',val)
     }
   },
-  methods:{
-    msgBtn(ev:any){
-      this.msg = "点击了typescript"
-      console.log('点击事件',ev)
+  methods: {
+    msgBtn(ev: any) {
+      this.msg = '点击了typescript';
+      // console.log('点击事件',ev)
     }
   }
 })
-
 </script>
 <style lang="scss" scoped>
-
 </style>

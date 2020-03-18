@@ -1,6 +1,7 @@
 <template>
     <div class="home">
-        <div>中英文切换测试：{{$t('message.text')}}</div>
+        <div >中英文切换测试：{{$t('message.text')}}</div>
+        <div style="font-family: sunfont;">加入自定义字体：sunfont</div>
         <hr/>
         <div style = "display:flex">
             分享到：
@@ -41,13 +42,22 @@
         <hr/>
         图片预览插件二（这个好用v-viewer）
         <viewer>
-        <img
-            width="150"
-            v-for="(src,index) in list"
-            :src="src.src"
-            :key="index"
-            >
-    </viewer>
+            <img
+                width="150"
+                v-for="(src,index) in list"
+                :src="src.src"
+                :key="index"
+                >
+        </viewer>
+    <hr>
+    文件预览
+    <!-- 本地路径微软链接报错 -->
+    <button @click="showFileView('docx','https://raw.githubusercontent.com/szc-sun/vuecli3/dev/public/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.docx')">word文本</button>
+    <button @click="showFileView('xlsx','https://raw.githubusercontent.com/szc-sun/vuecli3/dev/public/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.xlsx')">excel文本</button>
+    <button @click="showFileView('pptx','https://raw.githubusercontent.com/szc-sun/vuecli3/dev/public/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.pptx')">ppt文本</button>
+    <button @click="showFileView('pdf',origin+'/files/%E9%A2%84%E8%A7%88%E6%B5%8B%E8%AF%95.pdf')">pdf文本</button>
+    <FileView :FileViewData="FileViewData" v-if="FileViewData.show"/>
+
     </div>
   </div>
 </template>
@@ -56,11 +66,13 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import TinymceText from '@/components/tinymce/TinymceText'
+import FileView from '@/components/FileView'
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
     HelloWorld,
-    TinymceText
+    TinymceText,
+    FileView
   },
   data() {
     return {
@@ -76,7 +88,13 @@ export default {
           w: 1200,
           h: 900
         }
-      ]
+      ],
+      FileViewData: {
+        show: false,
+        url: '',
+        type: 'pdf'
+      },
+      origin: window.location.origin
     }
   },
   computed: {
@@ -84,12 +102,25 @@ export default {
       return this.$store.getters.test1
     }
   },
+  activated() {
+    console.log('activated')
+  },
   mounted() {
     // console.log(this.$store)
     // this.$store.dispatch('Login', '')
     this.drawLine()
   },
   methods: {
+    // 预览插件显示
+    showFileView(type, url) {
+      this.FileViewData = {
+        type: type,
+        url: url,
+        show: true
+      }
+      // this.FileViewData.show = true
+    },
+    // 分享
     shareTo(stype) {
       var ftit = ''
       var flink = ''
@@ -133,18 +164,18 @@ export default {
     },
     // 即将关闭的时候，调用这个处理函数
     closeHandler() {
-      console.log('closeHandler')
+      // console.log('closeHandler')
     },
     // 完全关闭之后，调用这个函数清理资源
     destroyHandler() {
-      console.log('destroyHandler')
+      // console.log('destroyHandler')
     },
     textChange() {
       this.$store.dispatch('ChangeTest', '456')
-      console.log(this.$store.getters.test1)
+      // console.log(this.$store.getters.test1)
     },
     release(content) {
-      console.log(content)
+      // console.log(content)
     },
 
     drawLine() {

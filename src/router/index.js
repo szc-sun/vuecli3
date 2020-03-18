@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import MainPart from '@/views/mainPart'
+import leafletRouter from './modules/leaflet-router'
+import maptalksRouter from './modules/maptalks-router'
 Vue.use(Router)
 
 // 公用权限路由
@@ -11,31 +13,31 @@ export const constantRouterMap = [
     // component: () => import('@/views/home/Home'),
     redirect: 'home',
     meta: {
-      // roles: ['首页'],
+    // roles: ['首页'],
       title: '首页',
       icon: 'el-icon-document'
     },
-    children: [{
-      path: 'home',
-      name: 'Home',
-      component: () => import('@/views/home/Home'),
-      meta: {
-        // roles: ['首页'],
-        title: '首页',
-        icon: 'el-icon-document'
-      }
-    },
-    {
-      path: 'message',
-      name: 'message',
-      meta: {
-        roles: ['我的消息'],
-        title: '我的消息',
-        icon: 'el-icon-setting'
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: () => import('@/views/home/Home'),
+        meta: {
+          // roles: ['首页'],
+          title: '首页',
+          icon: 'el-icon-document'
+        }
       },
-      component: () => import(/* webpackChunkName: "about" */ '@/views/message/Message'),
-      children: [
-        {
+      {
+        path: 'message',
+        name: 'message',
+        meta: {
+          roles: ['我的消息'],
+          title: '我的消息',
+          icon: 'el-icon-setting'
+        },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/message/Message'),
+        children: [{
           path: 'message2',
           name: 'message2',
           meta: {
@@ -55,8 +57,31 @@ export const constantRouterMap = [
           },
           component: () => import(/* webpackChunkName: "about" */ '@/views/message/Message')
         }
-      ]
-    }]
+        ]
+      }
+    ]
+  },
+  leafletRouter,
+  maptalksRouter,
+  {
+    path: '/search-engine',
+    name: 'search-engine',
+    redirect: '/search-engine/index',
+    component: MainPart,
+    // hidden: true,
+    children: [{
+      path: 'index',
+      name: 'index',
+      meta: {
+      // roles: ['数据管理'],
+        title: '搜索引擎',
+        icon: 'el-icon-search',
+        keepAlive: true
+      },
+      component: () => import(/* webpackChunkName: "about" */ '@/views/search-engine/index')
+    }
+
+    ]
   },
   {
     path: '/drag-table',
@@ -64,58 +89,110 @@ export const constantRouterMap = [
     redirect: '/drag-table/index',
     component: MainPart,
     // hidden: true,
-    children: [
-      {
-        path: 'index',
-        name: 'index',
-        meta: {
-          // roles: ['数据管理'],
-          title: '表格ts',
-          icon: 'el-icon-setting'
-        },
-        component: () => import(/* webpackChunkName: "about" */ '@/views/drag-table/drag-table')
-      }
+    children: [{
+      path: 'index',
+      name: 'dragindex',
+      meta: {
+      // roles: ['数据管理'],
+        title: '表格ts',
+        icon: 'el-icon-setting'
+      },
+      component: () => import(/* webpackChunkName: "about" */ '@/views/drag-table/drag-table')
+    }
 
     ]
   },
   {
     path: '/echarts-china',
-    name: 'echarts-china',
-    redirect: '/echarts-china/index1',
     component: MainPart,
-    // hidden: true,
-    children: [
-      {
-        path: 'index1',
-        name: 'index1',
-        meta: {
-          // roles: ['数据管理'],
-          title: '数据管理',
-          icon: 'el-icon-setting'
-        },
-        component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina')
+    meta: {
+      roles: ['数据管理'],
+      title: '数据管理',
+      icon: 'el-icon-setting'
+    },
+    children: [{
+      path: 'index1',
+      name: 'index1',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina'),
+      meta: {
+        title: '数据管理1',
+        icon: 'el-icon-setting'
       }
+    },
+    {
+      path: 'Leaflet',
+      name: 'Leaflet',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina2'),
+      meta: {
+        title: '数据管理2',
+        icon: 'el-icon-setting'
+      }
+    }
     ]
   },
-  {
-    path: '/echarts-china2',
-    name: 'echarts-china2',
-    redirect: '/echarts-china2/index2',
-    component: MainPart,
-    // hidden: true,
-    children: [
-      {
-        path: 'index2',
-        name: 'index2',
-        meta: {
-          // roles: ['数据管理'],
-          title: '数据管理2',
-          icon: 'el-icon-setting'
-        },
-        component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina2')
-      }
-    ]
-  },
+  // {
+  //   path: '/echarts-china',
+  //   name: 'echarts-china',
+  //   component: MainPart,
+  //   // hidden: true,
+  //   children: [
+  //     {
+  //       path: 'index1',
+  //       name: 'index1',
+  //       meta: {
+  //         // roles: ['数据管理'],
+  //         title: '数据管理',
+  //         icon: 'el-icon-setting'
+  //       },
+  //       component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina')
+  //     },
+  //     {
+  //       path: 'index2',
+  //       name: 'index2',
+  //       meta: {
+  //         // roles: ['数据管理'],
+  //         title: '数据管理2',
+  //         icon: 'el-icon-setting'
+  //       },
+  //       component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina2')
+  //     }
+  //     // {
+  //     //   path: 'index2',
+  //     //   name: 'index2',
+  //     //   meta: {
+  //     //     // roles: ['数据管理'],
+  //     //     title: '数据管理2',
+  //     //     icon: 'el-icon-setting'
+  //     //   },
+  //     //   component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina2')
+  //     // }
+  //   ]
+  // },
+  // {
+  //   path: '/echarts-china2',
+  //   name: 'echarts-china2',
+  //   redirect: '/echarts-china2/index2',
+  //   component: MainPart,
+  //   // hidden: true,
+  //   children: [
+  //     {
+  //       path: 'index2',
+  //       name: 'index2',
+  //       meta: {
+  //         // roles: ['数据管理'],
+  //         title: '数据管理2',
+  //         icon: 'el-icon-setting'
+  //       },
+  //       component: () => import(/* webpackChunkName: "about" */ '@/views/echarts/echartsChina2')
+  //     }
+  //   ]
+  // },
   {
     path: '/login',
     name: 'login',
@@ -150,32 +227,33 @@ export const asyncRouterMap = [
       title: '关于',
       icon: 'el-icon-setting'
     },
-    children: [{
-      path: 'index',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '@/views/about/About.vue'),
-      meta: {
-        roles: ['关于'],
-        title: '关于',
-        icon: 'el-icon-setting'
+    children: [
+      {
+        path: 'index',
+        name: 'about',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/About.vue'),
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-setting'
+        }
+      },
+      {
+        path: 'Leaflet',
+        name: 'AboutLeaflet',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/Leaflet.vue'),
+        meta: {
+          roles: ['关于'],
+          title: '关于',
+          icon: 'el-icon-setting'
+        }
       }
-    },
-    {
-      path: 'index2',
-      name: 'about2',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '@/views/about/About.vue'),
-      meta: {
-        roles: ['关于'],
-        title: '关于',
-        icon: 'el-icon-setting'
-      }
-    }
     ]
   },
   {
@@ -209,6 +287,8 @@ export const asyncRouterMap = [
 
 export default new Router({
   // mode: 'history', //后端支持可开
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({
+    y: 0
+  }),
   routes: constantRouterMap
 })

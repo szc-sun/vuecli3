@@ -7,20 +7,20 @@
 <script>
 import tinymce from 'tinymce/tinymce'
 // 这下面是tinymce的插件
-import 'tinymce/skins/ui/oxide/skin.css' // 白
+// import 'tinymce/skins/ui/oxide/skin.css' // 白
 // import 'tinymce/skins/ui/oxide-dark/skin.css' // 黑
 import 'tinymce/themes/silver/theme'
-import 'tinymce/plugins/image'
-import 'tinymce/plugins/link'
+import 'tinymce/plugins/image' // 插入上传图片插件
+import 'tinymce/plugins/link' // 插入视频插件
 import 'tinymce/plugins/code'
-import 'tinymce/plugins/table'
-import 'tinymce/plugins/lists'
+import 'tinymce/plugins/table' // 插入表格插件
+import 'tinymce/plugins/lists' // 列表插件
 import 'tinymce/plugins/contextmenu'
-import 'tinymce/plugins/wordcount'
+import 'tinymce/plugins/wordcount' // 字数统计插件
 import 'tinymce/plugins/colorpicker'
 import 'tinymce/plugins/textcolor'
 // 这里写你自己存放语言包的路径
-import '../../../public/tinymce/langs/zh_CN.js'
+// import '../../../public/tinymce/langs/zh_CN.js'
 
 export default {
   name: '',
@@ -31,11 +31,12 @@ export default {
     return {
       init: {
         selector: '#' + this.id,
+        language_url: '/tinymce/langs/zh_CN.js',
         language: 'zh_CN',
-        skin_url: 'tinymce/skins/ui/oxide-dark',
+        skin_url: '/tinymce/skins/ui/oxide-dark',
         height: 500,
         // 插件
-        plugins: 'link lists image code table colorpicker textcolor wordcount contextmenu',
+        plugins: 'link lists image code table wordcount ',
         // 工具栏
         toolbar:
                 'bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo | link unlink image code | removeformat',

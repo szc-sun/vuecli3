@@ -14,7 +14,8 @@
 <style>
 .nav-box{
 	height:calc(100% - 52px);
-	overflow-y: scroll;
+  overflow-x:hidden;
+	overflow-y: auto;
 	/*overflow-x:hidden;*/
 }
 .nav-box::-webkit-scrollbar{
@@ -23,8 +24,8 @@
 }
 .nav-box::-webkit-scrollbar-thumb{
 	border-radius:10px;
-	box-shadow:inset 0 0 6px #ccc;
-	-webkit-box-shadow:inset 0 0 6px #ccc;
+	box-shadow:inset 0 0 6px #f2f2f2;
+	-webkit-box-shadow:inset 0 0 6px #f2f2f2;
 	background-color: rgba(144,147,153,.5);
 }
 
@@ -37,7 +38,7 @@ export default {
   components: { Sidebar },
   data() {
     return {
-      isCollapse: true,
+      isCollapse: false,
       menudata: [{
         id: '1',
         title: '首页',
@@ -81,21 +82,21 @@ export default {
   },
   watch: {
     isCollapse: function(val) {
-      console.log(val)
+      // console.log(val)
     }
   },
   mounted() {
-    console.log(this.$router)
+    // console.log(this.$router)
   },
   methods: {
     changeIsCollapse() {
       this.isCollapse = !this.isCollapse
     },
     handleOpen(key, keyPath) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
     }
   }
 }

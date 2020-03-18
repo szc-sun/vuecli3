@@ -23,7 +23,7 @@ const Random = Mock.Random
 // Mock.mock('/news/index', 'get', newsData);  //mock(url,post/get/put/delete,数据)
 // Mock.mock(/\/mock\/login/, 'get', login.login);
 Mock.mock(RegExp('/mock/login' + '.*'), 'get', function(options) {
-  console.log(options)
+  // console.log(options)
   return Mock.mock(login.login)
 })
 Mock.mock(RegExp('/mock/list' + '.*'), 'post', function(options) {
