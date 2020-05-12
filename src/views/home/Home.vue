@@ -23,9 +23,6 @@
         <span @click="textChange">{{text}}</span>
         <hr/>
         <router-link to="/editor">富文本编辑器tinymce</router-link>
-
-        <tinymce-text id="tinymce" @release="release" style="color:#333"></tinymce-text>
-        <hr/>
         echarts地图
         <div id="myChart1" :style="{width: '600px', height: '600px'}"></div>
         <div id="myChart2" :style="{width: '600px', height: '600px'}"></div>
@@ -66,13 +63,11 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import TinymceText from '@/components/tinymce/TinymceText'
 import FileView from '@/components/FileView'
 export default {
   name: 'Home',
   components: {
     HelloWorld,
-    TinymceText,
     FileView
   },
   data() {
