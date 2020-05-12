@@ -22,7 +22,8 @@
         测试vuex
         <span @click="textChange">{{text}}</span>
         <hr/>
-        富文本编辑器tinymce
+        <router-link to="/editor">富文本编辑器tinymce</router-link>
+
         <tinymce-text id="tinymce" @release="release" style="color:#333"></tinymce-text>
         <hr/>
         echarts地图

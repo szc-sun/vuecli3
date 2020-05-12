@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import MainPart from '@/views/mainPart'
 import leafletRouter from './modules/leaflet-router'
 import maptalksRouter from './modules/maptalks-router'
+import editor from './modules/editor'
 Vue.use(Router)
 
 // 公用权限路由
@@ -61,6 +62,7 @@ export const constantRouterMap = [
       }
     ]
   },
+  editor,
   leafletRouter,
   maptalksRouter,
   {

@@ -39,7 +39,8 @@ export default {
         plugins: 'link lists image code table wordcount ',
         // 工具栏
         toolbar:
-                'bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo | link unlink image code | removeformat',
+                'bold italic underline strikethrough | fontselect | fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo | link unlink image code | removeformat',
+        // font_formats: 'Arial=arial;helvetica;sans-serif; Courier New=courier new,courier,monospace; AkrutiKndPadmini=Akpdmi-n',
         // 隐藏tinymce的标识
         branding: false
       }
@@ -50,6 +51,7 @@ export default {
       // content 是文本内容
       const content = tinymce.get(this.id).getContent()
       this.$emit('release', content)
+      console.log(content)
     }
   },
   mounted() {
