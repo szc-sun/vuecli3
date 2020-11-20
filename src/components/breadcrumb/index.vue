@@ -6,17 +6,18 @@
 			<el-breadcrumb-item>活动列表</el-breadcrumb-item>
 			<el-breadcrumb-item>活动详情</el-breadcrumb-item> -->
 			<transition-group name="breadcrumb">
-				<el-breadcrumb-item
-					v-for="(item,index) in levelList"
-					v-if="item.meta.title"
-					:key="item.path"
-				>
-					<span
-						v-if="item.redirect==='noredirect'||index==levelList.length-1"
-						class="no-redirect"
-					>{{ item.meta.title }}</span>
-					<router-link v-else :to="item.redirect||item.path">{{ item.meta.title }}</router-link>
-				</el-breadcrumb-item>
+				<template v-for="(item,index) in levelList">
+					<el-breadcrumb-item
+						v-if="item.meta.title"
+						:key="item.path"
+					>
+						<span
+							v-if="item.redirect==='noredirect'||index==levelList.length-1"
+							class="no-redirect"
+						>{{ item.meta.title }}</span>
+						<router-link v-else :to="item.redirect||item.path">{{ item.meta.title }}</router-link>
+					</el-breadcrumb-item>
+				</template>
 			</transition-group>
 		</el-breadcrumb>
 
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-import pathToRegexp from 'path-to-regexp'
+import * as pathToRegexp from 'path-to-regexp'
 export default {
   data() {
     return {

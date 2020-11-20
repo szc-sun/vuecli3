@@ -39,7 +39,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.file-view /deep/{
+.file-view ::v-deep{
   .el-dialog{
     height:70vh;
     display: flex;

@@ -141,7 +141,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.search-engine /deep/{
+.search-engine ::v-deep{
   .el-form{
     .inline-input{
       .el-input{

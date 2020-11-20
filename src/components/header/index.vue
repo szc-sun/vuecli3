@@ -124,7 +124,7 @@ export default {
     .lang-select{
       width:90px;
       background:#00C4E0;
-      /deep/.el-input{
+      ::v-deep.el-input{
         .el-input__inner{
           background:#00C4E0;
           color:#fff ;

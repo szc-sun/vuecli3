@@ -15,7 +15,7 @@ import VuePreview from 'vue2-preview'
 Vue.use(VuePreview)
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
-import vueJsonp from 'vue-jsonp'
+import * as vueJsonp from 'vue-jsonp'
 import './common/font/font.css'
 
 import VueKindEditor from 'vue-kindeditor';

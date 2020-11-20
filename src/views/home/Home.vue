@@ -6,13 +6,13 @@
         <div style = "display:flex">
             分享到：
             <el-button @click="shareTo('qq')">
-                <img src="http://zixuephp.net/static/images/qqshare.png" width="32">
+                <img src="@/assets/QQ.jpg" width="32">
             </el-button>
             <el-button @click="shareTo('sina')">
-                <img src="http://zixuephp.net/static/images/sinaweiboshare.png" width="36">
+                <img src="@/assets/weibo.jpg" width="36">
             </el-button>
             <el-button @click="shareTo('wechat')">
-                <img src="http://zixuephp.net/static/images/wechatshare.png" width="32">
+                <img src="@/assets/weixin.jpg" width="32">
             </el-button>
         </div>
         <hr/>
