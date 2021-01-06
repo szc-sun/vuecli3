@@ -21,7 +21,7 @@
     "leaflet": "^1.6.0",
     "maptalks": "^0.46.0",
     "path-to-regexp": "^3.2.0",
-    "tinymce": "^5.1.4",
+    "tinymce": "^5.6.0",
     "v-viewer": "^1.4.2",
     "vue": "^2.6.10",
     "vue-i18n": "^8.15.1",
